@@ -28,6 +28,11 @@ class FooterList extends React.Component {
           name: 'React-Kit-2',
           url: 'https://github.com/lmsp/React-Kit-2',
           tooltip: 'React con las características de React-Kit-1 más PostCSS, react-css-modules, Material Design, stylelint ...'
+        },
+        {
+          name: 'classNames',
+          url: 'https://github.com/JedWatson/classnames',
+          tooltip: 'Una utilidad Javascript simple para unir condicionalmente estilos'
         }
       ]
     }

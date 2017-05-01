@@ -3,6 +3,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import CSSModules from 'react-css-modules'
+import classNames from 'classnames'
 
 // Estilos locales
 import inlineStyles from './index.css'
@@ -64,9 +65,17 @@ class AppComponent extends React.Component {
   // className utiliza lso estilos globales
   // styleName utiliza los estilos locales
   render () {
+    var titleClassCondition = true
+
+    var titleClass = classNames({
+      index: true,
+      import: titleClassCondition,
+      otherStyle: !titleClassCondition
+    })
+
     return (
       <div>
-        <div className={styles.index} styleName='index import'>{title}</div>
+        <div className={styles.index} styleName={titleClass}>{title}</div>
         <MuiThemeProvider muiTheme={muiTheme}>
           <App />
         </MuiThemeProvider>
