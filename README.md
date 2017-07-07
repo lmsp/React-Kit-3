@@ -19,4 +19,5 @@ yarn install
 ## Ejecución
 
 Servidor: yarn server
+
 Cliente: yarn start
