@@ -1,15 +1,13 @@
-/* @flow */
-
 import React from 'react'
-import ReactDOM from 'react-dom'
+
 import CSSModules from 'react-css-modules'
 import classNames from 'classnames'
 
-// Estilos locales
-import inlineStyles from './index.css'
-
 // Estilos globales
 import styles from './index.global.css'
+
+// Estilos locales
+import inlineStyles from './index.css'
 
 // Colores utilizados en la aplicación que definen el tema de Material Design
 import {
@@ -23,17 +21,11 @@ import {
   red300,
   white
 } from 'material-ui/styles/colors'
-import {fade} from 'material-ui/utils/colorManipulator'
+import { fade } from 'material-ui/utils/colorManipulator'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
-import injectTapEventPlugin from 'react-tap-event-plugin'
-
-import App from './app.js'
-
-// Se necesita para onTouchTap
-// http://stackoverflow.com/a/34015469/988941
-injectTapEventPlugin()
+import ConnectionStateContainer from './components/ConnectionState'
 
 // Paleta de colores del tema Material Design
 const muiTheme = getMuiTheme({
@@ -56,13 +48,8 @@ const muiTheme = getMuiTheme({
 const title =
   'React con las características de React-Kit-2 más las tecnologías indicadas'
 
-// Esta función sirve sólo como ejemplo para probar flow
-function createDivId (a: string, b: string, c: string) {
-  return a + b + c
-}
-
-class AppComponent extends React.Component {
-  // className utiliza lso estilos globales
+class App extends React.Component {
+  // className utiliza los estilos globales
   // styleName utiliza los estilos locales
   render () {
     var titleClassCondition = true
@@ -77,19 +64,13 @@ class AppComponent extends React.Component {
       <div>
         <div className={styles.index} styleName={titleClass}>{title}</div>
         <MuiThemeProvider muiTheme={muiTheme}>
-          <App />
+          <ConnectionStateContainer />
         </MuiThemeProvider>
       </div>
     )
   }
 }
 
-// La variable allowMultiple permite defnir multiples estilos en styleName
-ReactDOM.render(
-  React.createElement(
-    CSSModules(AppComponent, inlineStyles, {allowMultiple: true})
-  ),
-  document.getElementById(createDivId('a', 'p', 'p'))
-)
-
-module.hot.accept()
+export default CSSModules(App, inlineStyles, {
+  allowMultiple: true
+})

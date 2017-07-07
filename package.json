@@ -16,9 +16,11 @@
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
+    "babel-node-debug": "^2.0.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.24.1",
     "browser-sync": "^2.18.8",
     "browser-sync-webpack-plugin": "^1.1.4",
     "clean-webpack-plugin": "^0.1.16",
@@ -52,18 +54,26 @@
     "webpack-dev-server": "^2.4.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --inline --hot --config ./webpack.config.js",
-    "build": "webpack --config ./webpack.config.js -p"
+    "start": "webpack-dev-server --progress --colors --inline --hot --history-api-fallback --config ./webpack.config.js",
+    "build": "webpack --config ./webpack.config.js -p",
+    "server": "babel-node-debug -p 8101 ./src/server/index.js"
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "immutable": "^3.8.1",
     "material-ui": "^0.17.4",
     "react": "^15.5.4",
     "react-css-modules": "^4.2.1",
     "react-dom": "^15.5.4",
     "react-inline-grid": "^0.5.3",
     "react-media": "^1.5.1",
+    "react-redux": "^5.0.4",
+    "react-router-dom": "next",
     "react-tap-event-plugin": "^2.0.1",
-    "react-tooltip": "^3.3.0"
+    "react-tooltip": "^3.3.0",
+    "redux": "^3.6.0",
+    "socketcluster": "^5.10.2",
+    "socketcluster-client": "^5.3.1",
+    "uuid": "^3.0.1"
   }
 }

@@ -84,6 +84,7 @@ let config = {
     filename: isDebug ? 'bundle.js' : 'bundle.[hash].js'
   },
   devServer: {
+    historyApiFallback: true,
     contentBase: './dist',
     hot: true
   },
@@ -94,7 +95,7 @@ if (isDebug) {
   config.entry = [
     'webpack-dev-server/client?http://localhost:' + webpackDevServerPort,
     'webpack/hot/only-dev-server',
-    './src/index.js'
+    './src/client/index.js'
   ]
   config.plugins.push(
     new BrowserSyncPlugin(
@@ -134,7 +135,7 @@ if (isDebug) {
     enforce: 'pre'
   })
 } else {
-  config.entry = './src/index.js'
+  config.entry = './src/client/index.js'
   config.plugins.push(
     new CleanWebpackPlugin(['dist'], {
       root: __dirname,
